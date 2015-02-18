@@ -25,7 +25,12 @@ class php5 {
         require => Package['php5-common'],
       }
     }
-    default: {  }
+    'wheezy': {
+      package {'php5-suhosin':
+        ensure => purged
+      }
+    }
+    default: { }
   }
 
   file { '/etc/php5/conf.d/zzz_common.ini':
