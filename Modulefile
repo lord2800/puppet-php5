@@ -1,4 +1,4 @@
-name         'bigcommerce-techops-php5'
+name         'bigcommerce-php5'
 version      '0.0.3'
 license      'MIT'
 summary      'Install and manage PHP'
