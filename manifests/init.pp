@@ -11,7 +11,6 @@ class php5 {
     'php5-intl',
     'php5-mcrypt',
     'php5-memcache',
-    'php5-mysql',
     'php5-pspell',
   ]:
     ensure  => 'present',
@@ -20,14 +19,19 @@ class php5 {
 
   case $::lsbdistcodename {
     'squeeze': {
-      package {'php5-suhosin':
+      package { ['php5-suhosin', 'php5-mysql']:
         ensure  => 'present',
         require => Package['php5-common'],
       }
     }
     'wheezy': {
-      package {'php5-suhosin':
-        ensure => purged
+      package { 'php5-suhosin':
+        ensure => 'purged'
+      }
+
+      package { 'php5-mysqlnd':
+        ensure  => 'present',
+        require => Package['php5-common'],
       }
     }
     default: { }
